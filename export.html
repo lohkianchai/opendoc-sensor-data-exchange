@@ -1,0 +1,1191 @@
+<!-- layout for print export.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./assets/images/favicon.ico">
+    <link rel="stylesheet" href="./assets/styles/normalize.css">
+    <link rel="stylesheet" href="./assets/styles/main.css">
+  </head>
+
+  <body class="print-content">
+    <section class="description">
+      <img class="description-logo" src="./assets/sdx-logo.png">
+      <div class="description-title">Sensor Data Exchange</div>
+    </section>
+
+    <div class="site-main" aria-label="Content" >
+      
+<h1 id="read-this-first">READ THIS FIRST</h1>
+
+<p>This is a 5 minute read that helps you understand most of the in-and-outs of SDX.</p>
+
+<h2 id="what-is-sdx">What is SDX?</h2>
+
+<p><strong>SDX</strong> stands for <strong>Sensors Data Exchange</strong>, a centralized sensor data exchange platform for the Whole-of-Government (WOG). It is part of the Strategic National Project under Smart Nation Solutions Platform (SNSP).</p>
+
+<p><strong>SDX</strong> enables government agencies and individuals to:</p>
+
+<ul>
+  <li>
+    <p>Publish and subscribe real-time sensor data using a self-service portal both government intranet and government commercial cloud.</p>
+  </li>
+  <li>
+    <p>Share unclassified (potentially up to restricted) sensor data with government sector organisations and individuals.</p>
+  </li>
+</ul>
+
+<h2 id="why-is-my-mqtt-connection-disconnecting">Why is my MQTT connection disconnecting?</h2>
+
+<p>You are using duplicate MQTT Client ID across your different MQTT connection. MQTT Client ID must be unique. You can generate one using a UUID.</p>
+
+<h2 id="what-are-the-inputs-required-to-connect-to-sdx-broker">What are the inputs required to connect to SDX broker?</h2>
+
+<p>Inputs required to connect to SDX broker:</p>
+
+<ol>
+  <li>Unique MQTT Client ID</li>
+  <li>Client key</li>
+  <li>Client secret</li>
+  <li>SSL CA file</li>
+  <li>SSL Client cert</li>
+  <li>SSL private key</li>
+  <li>Private key password</li>
+</ol>
+
+<p>All required and obtainable from the SDX Portal.</p>
+
+<h2 id="why-am-i-unable-to-subscribe-to-a-topic-on-my-mqtt-client">Why am I unable to subscribe to a topic on my MQTT client?</h2>
+
+<p>Check that you have subscribed to the topic via SDX Portal. If the topic requires approval, check that the subscription request is approved.</p>
+
+<h2 id="why-i-cannot-see-a-topic-in-the-browse-topics-page">Why I cannot see a topic in the Browse topics page?</h2>
+
+<p>Check with the publisher if the topic visibility is own agency and WOG. If you are in the same organisation (or team) as the publisher, and the visibility is own agency, you should be able to see the topic.</p>
+
+<h2 id="how-can-i-find-out-who-is-the-publisher-of-the-topic">How can I find out who is the publisher of the topic?</h2>
+
+<p>GGo to Browse topics page and click the topic that you need to find out who the publisher is. You can see the Publisher Created by ID in the Topic Details page.</p>
+
+<h2 id="how-can-i-contact-the-publisher-of-the-topic">How can I contact the publisher of the topic?</h2>
+
+<p>Use the Publisher Created by ID from the Topic Details page  and email to contact Publisher about this topic.</p>
+
+<h2 id="can-i-subscribe-to-my-own-topics">Can I subscribe to my own topics?</h2>
+
+<p>You cannot subscribe to topics published by the same project. The same project is not allowed to subscribe to its own topics.</p>
+
+<h2 id="why-my-mqtt-client-cannot-connect-to-sdx">Why my MQTT client cannot connect to SDX?</h2>
+
+<p>Make sure you have provided your IP address for the team to open the firewall.</p>
+
+<p>Check the connection settings on your client and ensure that the passwords are entered correctly.</p>
+
+<p>Check your SSL certificates are in valid format. Refer to this  <a href="https://www.ssl247.com/kb/ssl-certificates/troubleshooting/certificate-matches-private-key">page</a> on how to check.</p>
+
+<p>For example, check the private key file is ok using this command:</p>
+
+<p>openssl rsa –noout –modulus –in <file>.key | openssl md5</file></p>
+
+<h2 id="does-the-topic-pattern-have-a-maximum-length">Does the topic pattern have a maximum length?</h2>
+
+<p>The topic pattern has a maximum level of up to 8 levels. The total maximum length of the topic pattern is X characters.</p>
+
+<h2 id="what-are-the-character-restrictions-on-the-topic-pattern">What are the character restrictions on the topic pattern?</h2>
+
+<p>While creating a topic, the name must not have any slash (/), dot (.), or special characters.</p>
+
+<p>Letters, numbers, space, dash (-), and underscore (_) are allowed.</p>
+
+<h1 id="privacy">Privacy</h1>
+
+<h2 id="government-agency-privacy-statement">Government Agency Privacy Statement</h2>
+
+<p><strong>1.</strong>	This is a Government Agency digital service.</p>
+
+<p><strong>2.</strong>	We may use “cookies”, where a small data file is sent to your browser to store and track information about you when you enter our websites. The cookie is used to track information such as the number of users and their frequency of use, profiles of users and their preferred sites. While this cookie can tell us when you enter our sites and which pages you visit, it cannot read data off your hard disk.</p>
+
+<p><strong>3.</strong>	You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.</p>
+
+<p><strong>4.</strong>	If you provide us with personally identifiable data</p>
+
+<p><strong>(a)</strong>	We may share necessary data with other Government agencies, so as to serve you in the most efficient and effective way unless such sharing is prohibited by law.</p>
+
+<p><strong>(b)</strong>	We will NOT share your Personal Data with non-Government entities, except where such entities have been authorised to carry out specific Government services.</p>
+
+<p><strong>(c)</strong>	For your convenience, we may also display to you data you had previously supplied us or other Government Agencies. This will speed up the transaction and save you the trouble of repeating previous submissions. Should the data be out-of-date, please supply us the latest data.</p>
+
+<p><strong>5.</strong>	To safeguard your Personal Data, all electronic storage and transmission of Personal Data is secured with appropriate security technologies.</p>
+
+<p><strong>6.</strong>	This site may contain links to non-Government sites whose data protection and privacy practices may differ from ours. We are not responsible for the content and privacy practices of these other websites and encourage you to consult the privacy notices of those sites.</p>
+
+<p><strong>7.</strong>	Please contact <a href="mailto:sense@tech.gov.sg">sense@tech.gov.sg</a> if you:</p>
+
+<p><strong>(a)</strong>	have any enquires or feedback on our data protection policies and procedures,</p>
+
+<p><strong>(b)</strong>	need more information on or access to data which you have provided to us in the past.</p>
+
+<h1 id="terms-of-use">Terms of Use</h1>
+
+<h2 id="general">General</h2>
+
+<p><strong>1.</strong>	Thank you for visiting this website (“Website”) which is owned and operated by the Government Technology Agency (“GovTech”). By accessing and using this Website, you unconditionally accept and agree to be bound by these Terms of Use. If you do not agree to these Terms of Use, please do not use this Website.</p>
+
+<p><strong>2.</strong>	GovTech reserves the right to change these Terms of Use from time to time. All changes will be posted on this page, and your use of this Website after such changes have been posted will constitute your unconditional agreement to the modified Terms of Use and all of the changes.</p>
+
+<p><strong>2A.</strong> Use of the functions of this Website:</p>
+
+<p><strong>a.</strong> is limited only to Singapore public sector agencies; and</p>
+
+<p><strong>b.</strong> is permitted only where the Singapore public sector agency has a separate agreement with us governing the use of the functions of the Website (the “Public Sector Agreement”). The Public Sector Agreement will supersede these Terms of Use.
+	If you are not acting for and on behalf of a Singapore public sector agency which has a Public Sector Agreement with us, then these Terms of Use apply to you. You will not be able to access or use the functions of the Website.</p>
+
+<h2 id="proprietary-rights">Proprietary Rights</h2>
+
+<p><strong>1.</strong>	This Website and the materials made available on or through this Website (“Contents”), are protected by copyright, trademark and other forms of intellectual property rights. All rights in this Website and the Contents are owned by, licensed to, managed or controlled by GovTech.</p>
+
+<h2 id="restrictions-on-use-of-contents">Restrictions on use of Contents</h2>
+
+<p><strong>1.</strong>	You may access and use this Website and the Contents in the manner permitted in these Terms of Use only. For the avoidance of doubt, the functions of the Website will not be available to you.</p>
+
+<p><strong>2.</strong>	You may view and print the Contents for your personal, internal and non-commercial use, provided that you keep intact all accompanying copyright and other proprietary notices.</p>
+
+<p><strong>3.</strong>	You shall not make any deletions, additions, adjustments, alterations, adaptations or modifications to this Website or any of the Contents. You acknowledge and agree that any deletion, addition, adjustment, alteration, adaptation or modification of this Website or any of the Contents is a violation of intellectual property rights subsisting therein.</p>
+
+<p><strong>4.</strong>	Except as expressly permitted by these Terms of Use, you shall not reproduce, publish, upload, post, display, transmit or otherwise distribute this Website or any of the Contents in any manner or in any form, without the prior written permission of GovTech. You acknowledge and agree that any use of the Contents otherwise than in accordance with these Terms of Use is a violation of intellectual property rights subsisting therein</p>
+
+<h2 id="disclaimers-against-warranties-representations-and-liability">Disclaimers against Warranties, Representations and Liability</h2>
+
+<p><strong>1.</strong>	This Website and the Contents are provided on an “as is” and “as available” basis without warranties of any kind. To the fullest extent permitted by law, GovTech does not make any representations or warranties whatsoever and hereby disclaims all express, implied and statutory warranties of any kind to you or any third party, whether arising from usage or custom or trade or by operation of law or otherwise, including but not limited to the following:</p>
+
+<p><strong>a.</strong>	any representations or warranties as to the accuracy, completeness, reliability, timeliness, currency, quality or fitness for any particular purpose of the Contents of this Website; and</p>
+
+<p><strong>b.</strong>	any representations or warranties that the Contents and functions available on this Website shall be error-free or shall be available without interruption or delay, or that any defects on this Website shall be rectified or corrected, or that this Website, the Contents and the hosting servers are and will be free of all viruses and other harmful elements.</p>
+
+<p><strong>2.</strong>	GovTech shall not be liable to you or any third party for any damage or loss whatsoever, including but not limited to direct, indirect, punitive, special or consequential damages, loss of income, revenue or profits, lost or damaged data, or damage to your computer, software, modem or other property, arising directly or indirectly from:</p>
+
+<p><strong>a.</strong> your access to or use of this Website;</p>
+
+<p><strong>b.</strong> any loss of access to or use of this Website, howsoever caused;</p>
+
+<p><strong>c.</strong> any inaccuracy or incompleteness in, or errors or omissions in the transmission of, the Contents;</p>
+
+<p><strong>d.</strong> any delay or interruption in the transmission of the Contents on this Website, whether caused by delay or interruption in transmission over the internet or otherwise; or</p>
+
+<p><strong>e.</strong> any decision made or action taken by you or any third party in reliance upon the Contents, regardless of whether GovTech has been advised of the possibility of such damage or loss.</p>
+
+<p><strong>3.</strong>	You shall not rely on any Contents of this Website to claim or assert any form of legitimate expectation against GovTech, whether procedural or substantive in nature, in respect of any action that GovTech may or may not take in the exercise of its discretion, or in connection with GovTech’s roles as a statutory agency.</p>
+
+<h2 id="indemnity">Indemnity</h2>
+
+<p><strong>1.</strong>	You hereby agree to indemnify GovTech and hold GovTech harmless from and against any and all claims, losses, liabilities, costs and expenses (including but not limited to legal costs and expenses on a full indemnity basis) made against or suffered or incurred by GovTech arising directly or indirectly out of:</p>
+
+<p><strong>a.</strong>	your access to or use of this Website; or</p>
+
+<p><strong>b.</strong>	your breach of any of these Terms of Use.</p>
+
+<h2 id="availability-right-of-access-changes-to-website-and-contents">Availability, Right of Access, Changes to Website and Contents</h2>
+
+<p><strong>1.</strong>	GovTech may at any time suspend the operation of this Website or all or any of the Contents for any period of time without any prior notice, whether for the purposes of Website updating and upgrading or system maintenance or otherwise.</p>
+
+<p><strong>2.</strong>	GovTech reserves all rights to deny or restrict access to this Website by any person, or to block access from a particular internet address to this Website, at any time without prior notice and without ascribing any reason whatsoever.</p>
+
+<p><strong>3.</strong>	This Website and the Contents may be changed, modified, edited, removed or withdrawn by GovTech at its absolute discretion and at any time without prior notice.</p>
+
+<p><strong>4.</strong>	You shall obtain your own professional and/or legal advice relevant to your particular circumstances and conduct all necessary due diligence, including but not limited to making such investigations or seeking clarifications as may be appropriate, as regards any decision or action that you intend to take in relation to any matter concerning the Contents of this Website. This Website may not cover all information available on a particular issue.</p>
+
+<h2 id="hyperlinks-from-this-website-to-other-websites">Hyperlinks from this Website to other websites</h2>
+
+<p><strong>1.</strong>	This Website contains hyperlinks to websites which are not maintained by GovTech. GovTech is not responsible for the contents or reliability of those Websites and does not necessarily endorse the views expressed in them. GovTech has no control over and cannot guarantee the accessibility or proper functioning of those websites. Further, GovTech shall not be liable to you or any third party for any damage or loss whatsoever arising from your access to those websites. Use of the hyperlinks and access to those websites are entirely at your own risk.</p>
+
+<h2 id="governing-law">Governing Law</h2>
+
+<p><strong>1.</strong>	These Terms of Use shall be governed and construed in accordance with laws of the Republic of Singapore.</p>
+
+<h1 id="activities">Activities</h1>
+
+<p>This area allows you to view and track the list of all user activities in the portal. This page is available for publisher and subscriber.</p>
+
+<p>It displays the following information:</p>
+
+<ul>
+  <li><strong>Date</strong> - Displays the date based on filter range </li>
+  <li><strong>Action</strong> - Displays activity logs for create, update, and delete actions. 
+For example, Create actions such as login, logout, and search actions</li>
+  <li><strong>Action description</strong> - Displays description of certain activity such as log in, update, or create.</li>
+  <li><strong>Service</strong> - Displays the module of the system such as Topic, User, Project, Subscription, Feedback, and so on</li>
+  <li><strong>Payload</strong> - Displays the content of the activity</li>
+</ul>
+
+<p>Specify the date range to filter the information such as action and service.</p>
+
+<p>Click <strong>Show Payload</strong> to display the details of the activity and allow you to copy the JSON file.</p>
+
+<p><img src="/assets/Fig64.png" alt="Image not Available" /></p>
+
+<h1 id="browse-topics">Browse Topics</h1>
+
+<p>The <strong>Browse Topics</strong> page displays the latest topics and available topics in cards containing the topic related information.</p>
+
+<p>Each topic in the card is classified as:</p>
+
+<ul>
+  <li>
+    <p><img src="/assets/icon1.png" alt="Image not Available" /> - Refers to unclassified information disclosed to the public in the normal course of duty</p>
+  </li>
+  <li>
+    <p><img src="/assets/icon2.png" alt="Image not Available" /> - Refers to unclassified information not disclosed to the public in the normal course of duty</p>
+  </li>
+  <li>
+    <p><img src="/assets/icon3.png" alt="Image not Available" /> - Refers to unauthorised disclosure could cause SOME DAMAGE to an Agency</p>
+  </li>
+</ul>
+
+<p>Published date for each topic in the card is displayed.</p>
+
+<p>Mouse hover over icons and a tooltip appears for each topic in the card:</p>
+
+<ul>
+  <li>
+    <p><img src="/assets/icon4.png" alt="Image not Available" /> icon – This icon displays “Approval is needed from publisher before you subscribe”</p>
+  </li>
+  <li>
+    <p>Visibility icon – Displays who can view the topic:</p>
+    <ul>
+      <li><img src="/assets/icon5.png" alt="Image not Available" /> – This icon displays “All government agencies can view topic”</li>
+      <li><img src="/assets/icon6.png" alt="Image not Available" /> – This icon displays “Only members of my agency can view topic”</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/assets/Fig28.png" alt="Image not Available" /></p>
+
+<p>You can search for topic by entering the topic name in the <img src="/assets/icon7.png" alt="Image not Available" /> input box.</p>
+
+<p>Click <img src="/assets/icon8.png" alt="Image not Available" /> to filter the following:</p>
+
+<ul>
+  <li><strong>My Topics</strong> - Filter your own creted topics</li>
+  <li><strong>Data Classification</strong> – Filter the topic classified as Official-Open, Official-Closed, and Restricted</li>
+  <li><strong>Approval</strong> – Filter the topic whether approval is needed from the publisher as Free access or Request needed</li>
+  <li><strong>Publish date range</strong> – Filter the topic based on selected range of publishing date</li>
+  <li><strong>Organisation</strong> – Select from the dropdown to filter the organisation</li>
+  <li><strong>Sort By</strong> – Select from the dropdown to filter the newest, oldest, and recently updated topics</li>
+</ul>
+
+<p>Click <strong>Clear all filters</strong> to clear all filters selected.</p>
+
+<p><img src="/assets/Fig29.png" alt="Image not Available" /></p>
+
+<p>In the Browse Topics, you can start to create your own topic and project by clicking <strong>Create</strong> button.</p>
+
+<p>For related information about how to add more topics, see <strong>My Topics</strong>.</p>
+
+<p>For related information about how to create project, see <strong>Projects</strong>.</p>
+
+<h2 id="topic-details">Topic Details</h2>
+
+<p>You can view each topic in the card to know the details and what the topic is all about.</p>
+
+<p>As a Publisher you can:</p>
+
+<ul>
+  <li>See the topic overview</li>
+  <li>See folders and its subfolders within the topic</li>
+  <li>Edit folders and its subfolders within the topic</li>
+  <li>See subscribers to the topic</li>
+  <li>Edit own topic only</li>
+  <li>Subscribe to the topic</li>
+  <li>See the status of the topic</li>
+</ul>
+
+<p>As a Subscriber you can:</p>
+
+<ul>
+  <li>See the topic overview</li>
+  <li>See folders and its subfolders within the topic</li>
+  <li>Subscribe to the topic</li>
+  <li>See the status of the topic</li>
+</ul>
+
+<p><img src="/assets/Fig30.png" alt="Image not Available" /></p>
+
+<h1 id="getting-started">Getting Started</h1>
+
+<p><strong>SDX</strong> is a browser-based application that enable government agencies to share real-time information between each other through a self-service portal both government intranet and government commercial cloud.</p>
+
+<p>To get started in using the application:</p>
+
+<p><strong>Step 1:</strong> Click this <a href="https://sdx.sensors.gov.sg/sdx/home">link</a> and sign up using a valid agency email address (e.g. @tech.gov.sg).</p>
+
+<p><strong>Step 2:</strong> System will send an email notification to your email inbox. Click link to verify and proceed to sign up.</p>
+
+<p><img src="/assets/vid0howtosignup.gif" alt="Image is not available" /></p>
+
+<p><strong>Step 3:</strong> On first sign up within organization, your role will be a <strong>PUBLISHER</strong>.</p>
+
+<p>On second sign up with the same organization, your role will be a <strong>SUBSCRIBER</strong>.</p>
+
+<p>You can now share information, browse to latest topics, and create your own projects and topics.</p>
+
+<p><img src="/assets/Fig1.png" alt="Image is not available" /></p>
+
+<p>You can send a request through email to <a href="mailto:sense@tech.gov.sg">sense@tech.gov.sg</a> to change the role as Administrator to access Administrative features such as manage users.</p>
+
+<p><strong>Step 4:</strong> As a Publisher to publish your relevant information, you must first create your Project to create a topic. You can   also subscribe to your own topic.</p>
+
+<p>A topic cannot be duplicated and cannot published and subscribed to the same project again.</p>
+
+<p>Both Publisher and Subscriber can create a project, but only the Publisher can create topic.</p>
+
+<p><strong>Here is an example use case scenario:</strong></p>
+
+<p><em>Where:</em></p>
+
+<p>Agency A - For example, National Environment Agency (NEA)</p>
+
+<p>Agency B - For example, Land Transportation Authority (LTA)</p>
+
+<p><em>Scenario:</em></p>
+
+<p>Agency A will publish and share environment-related information about “Rainfall”.</p>
+
+<p>In SDX portal, Agency A will create a Project “Rainfall” and create topic about total rainfall for the month and publish it.</p>
+
+<p>A subscription approval is needed for another agency (Agency B) to subscribes to this topic.</p>
+
+<p><em>How to create a project:</em></p>
+
+<p><img src="/assets/vid1createproject.gif" alt="Image is not available" /></p>
+
+<p><em>How to publish created topic:</em></p>
+
+<p><img src="/assets/vid2publishtopic.gif" alt="Image is not available" /></p>
+
+<p>Agency B creates a project and will subscribes to Agency A topics.</p>
+
+<p><em>How to create a project to subscribe to a topic</em></p>
+
+<p><img src="/assets/vid3createprojectforsubscribe.gif" alt="Image is not available" /></p>
+
+<p><em>How to subcribes to a topic</em></p>
+
+<p><img src="/assets/vid4subscribetotopic.gif" alt="Image is not available" /></p>
+
+<p>Before Agency B can subscribes to Agency A topics, Agency B needs to request for topic subscription approval.</p>
+
+<p>Agency A will approve the subscription request.</p>
+
+<p><em>How to approve subscription request to a topic</em></p>
+
+<p><img src="/assets/vid5approvedsubscribetopic.gif" alt="Image is not available" /></p>
+
+<h1 id="glossary">Glossary</h1>
+
+<table class="tg">
+  <tr>
+    <td class="tg-9fd4">Term</td>
+    <td class="tg-9fd4">Description</td>
+  </tr>
+  <tr>
+    <td class="tg-cly1">GovTech</td>
+    <td class="tg-cly1">Government Technology Agency of Singapore</td>
+  </tr>
+  <tr>
+    <td class="tg-cly1">MFA</td>
+    <td class="tg-cly1">Multifactor Authentication</td>
+  </tr>
+  <tr>
+    <td class="tg-cly1">MQTT</td>
+    <td class="tg-cly1">Refers to Message Queuing Telemetry Transport. It is a lightweight publish and subscribe system where you can publish and receive messages as a client, often called a “broker”. A client may be either a publisher of information or a subscriber. Each client can connect to a broker.</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">On-Premise (On-Prem)</td>
+    <td class="tg-0lax">Installed and run on computers on the premises of the organisations</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Publisher</td>
+    <td class="tg-0lax">A person who wishes to publish a new topic using real-time sensor data using a self-service portal both on-premise and in the commercial cloud. Also known as sender of messages.</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">SDX</td>
+    <td class="tg-0lax">Sensors Data Exchange is a centralised data exchange platform for the Whole-of-Government</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Subscriber</td>
+    <td class="tg-0lax">A person who wishes to subscribe to a topic (that does not belong to his agency nor has it not been placed on his favourite list) and wishes to browse through new as well as trending topics.</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">TOTP</td>
+    <td class="tg-0lax">Time-based One Time Password</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">WOG</td>
+    <td class="tg-0lax">Whole-of-Government</td>
+  </tr>
+</table>
+
+<h1 id="home-page">Home Page</h1>
+
+<p>This area is the main page or the Home page.</p>
+
+<p><img src="/assets/Fig2.png" alt="Image not Available" /></p>
+
+<h2 id="sign-up">Sign Up</h2>
+
+<p>For first time users, you must register to get started to use the system.</p>
+
+<p>To sign up:</p>
+
+<p><strong>Step 1:</strong> Navigate to Home page and click <strong>Sign up</strong>.</p>
+
+<p>Fill in the following information.</p>
+
+<ul>
+  <li>Name</li>
+  <li>Organisation</li>
+  <li>Email address – Must be a valid <em>gov.sg</em> email id</li>
+  <li>Mobile number – Must be 8-digit in number</li>
+  <li>
+    <p>Password – For the password strength, these are the criteria to fulfill:</p>
+
+    <ul>
+      <li>At least 12 characters long</li>
+      <li>One uppercase and one lowercase letter</li>
+      <li>At least 1 number</li>
+      <li>At least 1 special character (space is not allowed)</li>
+    </ul>
+  </li>
+  <li>
+    <p>Confirm Password</p>
+
+    <p><img src="/assets/Fig3.png" alt="Image not Available" /></p>
+  </li>
+</ul>
+
+<p><strong>Step 2:</strong> Verify your email address.</p>
+
+<p><img src="/assets/Fig4.png" alt="Image not Available" /></p>
+
+<p><strong>Step 3:</strong> From the verification email, click the verify email address link.</p>
+
+<p><img src="/assets/Fig5.png" alt="Image not Available" /></p>
+
+<p><strong>Step 4:</strong> Enter the access code provided and click <strong>Submit</strong>.</p>
+
+<p><img src="/assets/Fig6.png" alt="Image not Available" /></p>
+
+<p><strong>Step 5:</strong> Once the account is successfully verified, log in using your username and password.</p>
+
+<p><img src="/assets/Fig7.png" alt="Image not Available" /></p>
+
+<p><strong>Step 6:</strong>	Follow the steps as displayed on the screen.</p>
+
+<p>You must first set up your MFA to be able to login. The MFA allows you to have additional layer of security when logging in.</p>
+
+<p><img src="/assets/Fig9.png" alt="Image not Available" /></p>
+
+<p>Scan the QR code with a TOTP-generating app like Google Authenticator or Authy.</p>
+
+<p><img src="/assets/Fig10.png" alt="Image not Available" /></p>
+
+<p>Enter the TOTP received from the TOTP-generating app with 6-digit code to link the app. Click <strong>Done</strong>.</p>
+
+<p><img src="/assets/Fig13.png" alt="Image not Available" /></p>
+
+<p><strong>Step 8:</strong>	Once the account is successfully setup, log in again.</p>
+
+<p><img src="/assets/Fig12.png" alt="Image not Available" /></p>
+
+<p><strong>Step 9:</strong> After you log in, enter the authentication 6-digit-code from your Authenticator App. Click <strong>Done</strong>.</p>
+
+<p><img src="/assets/Fig11.png" alt="Image not Available" /></p>
+
+<p>Upon successful log in, the Browse Topics page displays. For more related information about browse topics, see <strong>Browse Topics</strong>.</p>
+
+<h2 id="log-in">Log in</h2>
+
+<p>To log in:</p>
+
+<p><strong>Step 1:</strong>	Navigate to Home page and click <strong>Login</strong>.</p>
+
+<p><strong>Step 2:</strong>	Enter your registered email address and password.</p>
+
+<p><strong>Step 3:</strong>	Click <strong>Login</strong>.</p>
+
+<p><img src="/assets/Fig14.png" alt="Image not Available" /></p>
+
+<p><strong>Step 4:</strong>	After you log in, enter the authentication 6-digit-code from your Authenticator App. Click <strong>Done</strong>.</p>
+
+<p><img src="/assets/Fig15.png" alt="Image not Available" /></p>
+
+<p>Upon successful log in, the Browse Topics page displays, see <strong>Browse Topics</strong>.</p>
+
+<h2 id="forgot-password">Forgot Password</h2>
+
+<p>To reset password:</p>
+
+<p><strong>Step 1:</strong>	Click <strong>Forgot Password</strong> and enter your registered email address.</p>
+
+<p><strong>Step 2:</strong>	Click <strong>Send recovery link</strong>.</p>
+
+<p><img src="/assets/Fig16.png" alt="Image not Available" /></p>
+
+<p>You will receive an email to the registered email address with the password reset link. Click the reset password link.</p>
+
+<p><img src="/assets/Fig17.png" alt="Image not Available" /></p>
+
+<p><strong>Step 3:</strong>	Enter the following information:</p>
+
+<ul>
+  <li>Confirmation Code</li>
+  <li>Email</li>
+  <li>Password</li>
+  <li>Confirm Password</li>
+</ul>
+
+<p><strong>Step 4:</strong>	Click <strong>Reset Password</strong>.</p>
+
+<p><img src="/assets/Fig18.png" alt="Image not Available" /></p>
+
+<p>Once reset password is successful, you will now be able to login to your account with your new password.</p>
+
+<p><img src="/assets/Fig19.png" alt="Image not Available" /></p>
+
+<h2 id="profile">Profile</h2>
+
+<p>Navigate to Profile to perform the following:</p>
+
+<ul>
+  <li>Account Settings – Click to update user information</li>
+  <li>Feedback – Click to provide feedback such as future enhancements and improvements</li>
+  <li>Manage Users – Only Administrator role can view and manage users, see <strong>Manage Users</strong></li>
+  <li>Report Vulnerability – Click to report vulnerability using this <a href="https://www.tech.gov.sg/report_vulnerability">link</a></li>
+  <li>User Guide - Click to view user guide</li>
+  <li>Logout – Click to log out to the application</li>
+</ul>
+
+<h3 id="account-settings">Account Settings</h3>
+
+<p>You can update information in the Account Settings.</p>
+
+<p>To update account:</p>
+
+<p>Navigate to Profile Icon and click <strong>Account Settings</strong>.</p>
+
+<p><strong>Note:</strong> <em>You can update name, mobile number, and password.</em></p>
+
+<p><em>Validation includes:</em></p>
+<ul>
+  <li><em>Mobile number must be 8-digit number.</em></li>
+  <li><em>Password must meet the following requirements:</em>
+    <ul>
+      <li><em>At least 12 characters long</em></li>
+      <li><em>Uppercase and Lowercase letters</em></li>
+      <li><em>At least 1 number</em></li>
+      <li><em>At least 1 special character (space is not allowed)</em></li>
+    </ul>
+
+    <p><img src="/assets/Fig20.png" alt="Image not Available" /></p>
+  </li>
+</ul>
+
+<p>To change password:</p>
+
+<p><strong>Step 1:</strong>	Navigate to Password and click <strong>Change</strong>.</p>
+
+<p><strong>Step 2:</strong>	Enter the following information to change password:</p>
+
+<ul>
+  <li>Current password</li>
+  <li>New password</li>
+  <li>Confirm new password</li>
+</ul>
+
+<p><strong>Step 3:</strong>	Click <strong>Change password</strong>.</p>
+
+<p><img src="/assets/Fig21.png" alt="Image not Available" /></p>
+
+<p>Once change password is successful, you will be asked to logged out and log in again with your new password.</p>
+
+<p><img src="/assets/Fig22.png" alt="Image not Available" /></p>
+
+<h3 id="feedback">Feedback</h3>
+
+<p>To provide feedback:</p>
+
+<p><strong>Step 1:</strong>	Navigate to Profile icon and click <strong>Feedback</strong>.</p>
+
+<p><strong>Step 2:</strong>	Write feedback in the input box and select the type of feedback.</p>
+
+<ul>
+  <li>Bugs</li>
+  <li>Suggestion</li>
+  <li>Request</li>
+  <li>Others</li>
+</ul>
+
+<p><strong>Step 3:</strong>	Click <strong>Send Feedback</strong>.</p>
+
+<p><img src="/assets/Fig23.png" alt="Image not Available" /></p>
+
+<h3 id="manage-users">Manage Users</h3>
+
+<p>Allows you to add and manage users within your agency. Only the Administrator can view and manage this page.</p>
+
+<p>In this page, you can view the following:</p>
+
+<ul>
+  <li>Name – Displays the name of the user</li>
+  <li>Email – Displays the email address</li>
+  <li>Role – Displays the role assigned to the user</li>
+  <li>Status – Displays the status of the user account
+    <ul>
+      <li>Active</li>
+      <li>Disabled</li>
+      <li>Verifying</li>
+      <li>Locked</li>
+    </ul>
+  </li>
+  <li>
+    <p>Action – Displays the action you can perform based on user status</p>
+
+    <p><img src="/assets/Fig24.png" alt="Image not Available" /></p>
+  </li>
+</ul>
+
+<p>You can add more user on the list by clicking <strong>Add User</strong>.</p>
+
+<p>To add user:</p>
+
+<p><strong>Step 1:</strong>	Navigate to Profile Icon and click <strong>Manage Users</strong>. The Manager Users page displays.</p>
+
+<p><strong>Step 2:</strong>	Click <strong>Add User</strong>.</p>
+
+<p><strong>Step 3:</strong>	Enter email address.</p>
+
+<p><strong>Step 4:</strong>	Select from the dropdown the role to assign to new user.</p>
+
+<p><strong>Step 5:</strong>	Click <strong>Done</strong>. The new user is added successfully to the list of users and the status is Active.</p>
+
+<p><img src="/assets/Fig25.png" alt="Image not Available" /></p>
+
+<p>By clicking <strong>Action</strong>, you can perform certain action based on the following status.</p>
+
+<ul>
+  <li>
+    <p>Active status</p>
+
+    <ul>
+      <li>Locked – Click to lock the user account</li>
+      <li>Disable – Click to disable the user account</li>
+      <li>Changed Role – Click to change the role assigned to the user as Publisher, Subscriber, and Administrator</li>
+    </ul>
+  </li>
+  <li>
+    <p>Disabled status</p>
+
+    <ul>
+      <li>Enable – Click to enable again the user account created</li>
+    </ul>
+  </li>
+  <li>
+    <p>Verifying status</p>
+
+    <ul>
+      <li>Resend code – Click to resend code again to the user</li>
+      <li>Disable – Click to disable the user account</li>
+    </ul>
+  </li>
+  <li>
+    <p>Locked status– Click to unlock the user account</p>
+  </li>
+</ul>
+
+<h3 id="report-vulnerability">Report Vulnerability</h3>
+
+<p>To report vulnerability:</p>
+
+<p>Navigate to Profile and click <strong>Report Vulnerability</strong>. You will be redirected to a new link portal.</p>
+
+<p><img src="/assets/Fig26.png" alt="Image not Available" /></p>
+
+<h3 id="user-guide">User Guide</h3>
+
+<p>To view user guide:</p>
+
+<p>Navigate to Profile and click <strong>User Guide</strong>. You will be redirected to a new link portal.</p>
+
+<p><img src="/assets/Fig27a.png" alt="Image not Available" /></p>
+
+<h3 id="logout">Logout</h3>
+
+<p>To log out:</p>
+
+<p>Navigate to Profile and click <strong>Logout</strong>.</p>
+
+<p><img src="/assets/Fig27.png" alt="Image not Available" /></p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p><strong>Sensor Data Exchange (SDX)</strong> is a centralized data exchange platform for Whole-of-Government (WOG) to provide seamless data sharing and management, and encompass public, private and industrial internet-of-things (IoT) sensors.</p>
+
+<p>This system enables government agencies to:</p>
+
+<ul>
+  <li>Publish and subscribe (near) real-time sensor data using a self-service portal both government intranet and government commercial cloud.</li>
+  <li>Share unclassified (potentially up to restricted) sensor data with government sector organisations and individuals.</li>
+</ul>
+
+<p>In SDX, a government agency can act as a publisher to publish information. For example, the National Environment Agency (NEA) may publish and share environment-related information about the weather and air quality.</p>
+
+<h2 id="roles-and-responsibilities">Roles and Responsibilities</h2>
+
+<p>There are several roles within the SDX application.</p>
+
+<ul>
+  <li>
+    <p><strong>Administrator</strong></p>
+
+    <ul>
+      <li>Manage users within agency, see <strong>Manage Users</strong></li>
+      <li>Browse topics and verify all topics published by publisher based on the visibility as “All Government agency” and “Only to my agency” within the same organisation</li>
+      <li>Publish and subscribe to topics</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Publisher</strong></p>
+
+    <ul>
+      <li>Browse topics and verify topic details</li>
+      <li>Create projects and topics</li>
+      <li>Publish and subscribe to topics</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Subscriber</strong></p>
+
+    <ul>
+      <li>Browse topics</li>
+      <li>Create projects</li>
+      <li>Subscribe to topics</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="my-subscribers">My Subscribers</h1>
+
+<p>This area allows you to view all subscribers who subscribed successfully to all the topics within the projects. This page is available only for Publisher and displays the following information:</p>
+
+<ul>
+  <li>Project Name</li>
+  <li>Agency</li>
+  <li>Topic subscribed</li>
+  <li>Project description</li>
+  <li>Status</li>
+  <li>Action</li>
+</ul>
+
+<p>The following status includes:</p>
+
+<ul>
+  <li><strong>Respond to Request</strong> – The status where the publisher respond to subscribers request for access to the private topics. The publisher can “Approve” to allow subscription or “Reject” to deny the subscription.</li>
+  <li><strong>Subscribed</strong> – The status where the publisher approved the subscriber requests.</li>
+  <li><strong>Rejected</strong> – The status where the publisher rejected the subscriber requests.</li>
+</ul>
+
+<p><img src="/assets/Fig60.png" alt="Image not Available" /></p>
+
+<p>To respond to subscriber request:</p>
+
+<p><strong>Step 1:</strong>	Navigate to My Subscribers page on the left side navigation bar and select the project with Respond to Request status.</p>
+
+<p><strong>Step 2:</strong>	Click <strong>…</strong> icon under the <strong>Action</strong> column.</p>
+
+<p><strong>Step 3:</strong>	Click <strong>Respond to Request</strong>. A new window appears showing the details of the project.</p>
+
+<p><img src="/assets/Fig61.png" alt="Image not Available" /></p>
+
+<p><strong>Step 4:</strong>	Click <strong>Approve</strong> and the status changed to Subscribed.</p>
+
+<p><strong>Step 5:</strong>	Otherwise, click <strong>Reject</strong>. A new window appears showing the reason to subscribers for rejecting the subscription request.</p>
+
+<p><img src="/assets/Fig62.png" alt="Image not Available" /></p>
+
+<p><strong>Step 6:</strong>	Click <strong>Confirm</strong> and the status changed to Rejected.</p>
+
+<h1 id="my-subscriptions">My Subscriptions</h1>
+
+<p>This area allows you to see the list of all subscribed topics including the status of each subscription. This page is available for Publisher and Subscriber. It displays the following information:</p>
+
+<ul>
+  <li>Topic Subscribed</li>
+  <li>Published by</li>
+  <li>Topic description</li>
+  <li>Project name</li>
+  <li>Status</li>
+  <li>Action</li>
+</ul>
+
+<p>The following status includes:</p>
+
+<ul>
+  <li>Subscribed – The status of the topic that is being subscribed.</li>
+  <li>Rejected – The status of the topic that is being rejected.</li>
+  <li>Pending – The status of the topic that is pending.</li>
+</ul>
+
+<p><img src="/assets/Fig63.png" alt="Image not Available" /></p>
+
+<p>To unsubscribe to the topic:</p>
+
+<p><strong>Step 1:</strong>	Navigate to My Subscriptions page and select subscribed topic with Subscribed status.</p>
+
+<p><strong>Step 2:</strong>	Click <strong>…</strong> icon under the <strong>Action</strong> column.</p>
+
+<p><strong>Step 3:</strong>	Click <strong>Subscribed</strong>. A pop-up window appears to unsubscribe to the subscribed topic.</p>
+
+<p><strong>Step 4:</strong>	Click <strong>Unsubscribe</strong>. Once unsubscribed, the topic will be removed from My Subscriptions page.</p>
+
+<p><img src="/assets/Fig64.png" alt="Image not Available" /></p>
+
+<p>To View Reason of the Rejected Topic</p>
+
+<p><strong>Step 1:</strong>	Navigate to My Subscriptions page and select subscribed topic with Rejected status.</p>
+
+<p><strong>Step 2:</strong>	Click <strong>…</strong> icon under the <strong>Action</strong> column.</p>
+
+<p><strong>Step 3:</strong>	Click <strong>Reason</strong>. A pop-up window appears showing the reason of the topic rejection.</p>
+
+<p><strong>Step 4:</strong>	Click <strong>Ok</strong>.</p>
+
+<p><img src="/assets/Fig65.png" alt="Image not Available" /></p>
+
+<p>To Withdraw Pending Topic Subscription</p>
+
+<p><strong>Step 1:</strong>	Navigate to My Subscriptions page and select subscribed topic with Pending status.</p>
+
+<p><strong>Step 2:</strong>	Click <strong>…</strong> icon under the <strong>Action</strong> column.</p>
+
+<p><strong>Step 3:</strong>	Click <strong>Withdraw</strong>. A pop-up window appears to withdraw the request for the topic subscription.</p>
+
+<p>Once withdrawn, the topic is removed from My Subscriptions page.</p>
+
+<p><img src="/assets/Fig66.png" alt="Image not Available" /></p>
+
+<h1 id="projects">Projects</h1>
+
+<p>A project is a piece of planned work or activity where you can organize and arrange topics that you intend to publish and wish to subscribe to.</p>
+
+<p>It contains connection strings and SSL certifications to set up a connection to MQTT. MQTT stands for Message Queuing Telemetry Transport. It is a publish/subscribe protocol where you can publish and receive messages as a client, often called a “broker”. The job of an MQTT broker is to filter messages based on topic, and then distribute them to subscribers. There is no direct connection between a publisher and subscriber. All clients can publish (broadcast) and subscribe (receive).</p>
+
+<p>To publish your relevant information, you must first create your own project to create a topic and subscribe to your own topic. A topic cannot be duplicated  and cannot published and subscribed to the same project again.</p>
+
+<p>Both publisher and subscriber can create a project. Both publisher and subscriber need to have a project before both can publish or subscribe to any topic. Only the publisher can create a topic.</p>
+
+<p>You can create new project by clicking <strong>Create</strong> button on the top right of the Browse Topics page and select <strong>New Project</strong>.</p>
+
+<p><img src="/assets/Fig31.png" alt="Image not Available" /></p>
+
+<p>Or, click <strong>Projects</strong> from the left side navigation bar.</p>
+
+<p><img src="/assets/Fig32.png" alt="Image not Available" /></p>
+
+<h2 id="create-new-project">Create New Project</h2>
+
+<p>To create new project:</p>
+
+<p><strong>Step 1:</strong>	Click <strong>Create Project</strong>. The Projects page is displayed.</p>
+
+<p><strong>Note:</strong> <em>For your first project, you will see this page as shown below.</em></p>
+
+<p><img src="/assets/Fig33.png" alt="Image not Available" /></p>
+
+<p><strong>Step 2:</strong>	Enter the following information.</p>
+<ul>
+  <li>Project Name</li>
+  <li>Type of project (For example: Publish, Subscribe)</li>
+  <li>Project Duration</li>
+  <li>Description</li>
+</ul>
+
+<p><img src="/assets/Fig34.png" alt="Image not Available" /></p>
+
+<p>The newly created project appears in the <strong>Projects</strong> page &gt; <strong>Overview</strong> tab. Click <strong>Save</strong>.</p>
+
+<p><img src="/assets/Fig35.png" alt="Image not Available" /></p>
+
+<p>In the Projects page, displays the project name, date created, number of publication and subscription. It also includes the following tabs:</p>
+
+<ul>
+  <li>Overview – Displays the details of the project.</li>
+  <li>Connections – Displays the details to set up and connect to MQTT Client.</li>
+  <li>
+    <p>My topics – Displays the topic that you have published to this project and the total number of topics published by this project. 
+<strong>Note:</strong> <em>This tab is only available for a Publisher only.</em></p>
+  </li>
+  <li>Subscribed topics – Displays the topic that you have subscribed by this project and the total number of topics subscribed by this project.</li>
+</ul>
+
+<h2 id="set-up-mqtt-connections">Set up MQTT Connections</h2>
+
+<p>After creating a new project, this tab shows the connection strings and SSL certificates to setup connections to MQTT connections.</p>
+
+<ul>
+  <li>Unique MQTT URL</li>
+  <li>Unique MQTT Client ID</li>
+  <li>Client key</li>
+  <li>Client secret</li>
+  <li>SSL Certificate chain</li>
+  <li>SSL Client certificate</li>
+  <li>SSL Private key</li>
+  <li>Private key password</li>
+</ul>
+
+<p><img src="/assets/Fig36.png" alt="Image not Available" /></p>
+
+<p><strong>Note:</strong> <em>The Private key only appears once. You must copy and save the certificates in a text editor file.</em></p>
+
+<p>Alternatively, click <strong>Generate certificate</strong> button to generate new certificate.</p>
+
+<p>You will receive a Private key password through email and use that password in the Client key passphrase field.</p>
+
+<p><img src="/assets/Fig38.png" alt="Image not Available" /></p>
+
+<p>To set up MQTT Client connection:</p>
+
+<p><strong>Step 1:</strong>	Copy the certificates in a Text Editor and save each file separately.</p>
+
+<p><strong>Step 2:</strong>	Now, open MQTT Client.</p>
+
+<p><img src="/assets/Fig39.png" alt="Image not Available" /></p>
+
+<p><strong>Step 3:</strong> Click Create MQTT Client.</p>
+
+<p>A Publisher can create MQTT connection using the certificates generated and with the password from the email inbox.</p>
+
+<p><strong>Step 4:</strong> Set up MQTT connections with the following:</p>
+
+<ul>
+  <li>MQTT Client Name – Name is not specific and can give random name</li>
+  <li>Protocol - Select protocol. For example, <em>mqtt/tls</em></li>
+  <li>
+    <p>Host - Enter host name. For example, <em>sdx.sensors.gov.sg</em></p>
+  </li>
+  <li>Upload each file you copied in a Text Editor in the following fields:
+    <ul>
+      <li>CA file</li>
+      <li>Client certificate file</li>
+      <li>Client key file</li>
+    </ul>
+  </li>
+  <li>Enter the password received from the email inbox in the Client key passphrase field</li>
+</ul>
+
+<p><img src="/assets/Fig40.png" alt="Image not Available" /></p>
+
+<ul>
+  <li>Click <strong>Save</strong> and connected successfully.</li>
+</ul>
+
+<p><img src="/assets/Fig41.png" alt="Image not Available" /></p>
+
+<p><strong>Step 5:</strong> Using MQTT client, a publisher published a topic.</p>
+
+<ul>
+  <li>Copy the topic path and fill into the <strong>Topic to publish</strong> field in MQTT client. For example: <em>govtech-ndmrcHUWg/Topic-temperature</em></li>
+  <li>Click <strong>Subscribe</strong> button</li>
+  <li>Subscriber is ready to receive data for this topic</li>
+</ul>
+
+<p><img src="/assets/Fig42.png" alt="Image not Available" /></p>
+
+<p>Here is an example of MQTT code samples. Download the files and use for reference.</p>
+
+<ul>
+  <li>
+    <p><a href="/assets/java.zip" download="">Click to download</a> java.zip.</p>
+  </li>
+  <li>
+    <p><a href="/assets/node.zip" download="">Click to download</a> node.zip.</p>
+  </li>
+</ul>
+
+<p>For more related information about MQTT, refer to this <a href="https://www.hivemq.com/blog/mqtt-essentials-part-3-client-broker-connection-establishment/">link</a>.</p>
+
+<h2 id="my-topics">My Topics</h2>
+
+<p>After creating a project, create your first topic. The <strong>My Topics</strong> tab is only available for a Publisher. This tab shows the topic that have been published on this project.</p>
+
+<p>To create a topic:</p>
+
+<p><strong>Step 1:</strong> Navigate to <strong>Projects</strong> page &gt; <strong>My topics</strong> tab. Click <strong>Create Topic</strong>.</p>
+
+<p><img src="/assets/Fig43.png" alt="Image not Available" /></p>
+
+<p><strong>Step 2:</strong> Select from the option who can see the topic. Click <strong>Next</strong>.</p>
+
+<ul>
+  <li>All government agencies</li>
+  <li>Only my agency</li>
+</ul>
+
+<p><img src="/assets/Fig44.png" alt="Image not Available" /></p>
+
+<p><strong>Step 3:</strong>	Select data classification. Click <strong>Next</strong>.</p>
+
+<p><img src="/assets/Fig45.png" alt="Image not Available" /></p>
+
+<p><strong>Step 4:</strong>	Select the project and enter topic name. Click <strong>Next</strong>.</p>
+
+<p><img src="/assets/Fig46.png" alt="Image not Available" /></p>
+
+<p><strong>Step 5:</strong>	Fill in the following details of the topic.</p>
+
+<ul>
+  <li>Description – Enter description to the topic</li>
+  <li>Tags – Add tags to the topic maximum of 5 tags</li>
+  <li>Is approval needed for subscription requests?
+    <ul>
+      <li>Yes – Approval is needed from publisher before you subscribe</li>
+      <li>No – Allows free access to the topic and no approval needed from the publisher</li>
+    </ul>
+  </li>
+  <li>Also publish on SDX on-prem?
+    <ul>
+      <li>Yes – Refer to the steps in <strong>Publish Topic on SDX On-Premises</strong> and continue</li>
+      <li>No</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/assets/Fig47.png" alt="Image not Available" /></p>
+
+<p><strong>Step 6:</strong> Click <strong>Create</strong>. The new topic is created successfully.</p>
+
+<p>You can see the newly created topic being added in <strong>Projects</strong> page &gt; <strong>My topics</strong> tab.</p>
+
+<p><img src="/assets/Fig49.png" alt="Image not Available" /></p>
+
+<h3 id="publish-topic-on-sdx-on-premises">Publish Topic on SDX On-Premises</h3>
+
+<p>To publish topic on SDX on-premises:</p>
+
+<p><strong>Step 1:</strong>	Click <strong>Yes</strong> in Also publish on SDX on-prem? field.</p>
+
+<p><strong>Step 2:</strong>	Select the project code and name.</p>
+
+<p><strong>Step 3:</strong>	Click <strong>Create</strong>.</p>
+
+<p><img src="/assets/Fig50.png" alt="Image not Available" /></p>
+
+<p><strong>Note:</strong> <em>If there is no on-prem project available, select <strong>No</strong> to continue.</em></p>
+
+<p>You can add more topics within the topic on your own project by selecting from topic folder or subfolder and clicking the <img src="/assets/icon9.png" alt="Image not Available" /> icon.</p>
+
+<h3 id="add-topic-within-a-topic">Add Topic within a Topic</h3>
+
+<p>To add topic within a topic:</p>
+
+<p><strong>Step 1:</strong>	Navigate to Projects &gt; <strong>My topics</strong> tab.</p>
+
+<p><strong>Step 2:</strong>	Select a topic and click <img src="/assets/icon9.png" alt="Image not Available" /> icon.</p>
+
+<p><strong>Step 3:</strong> Click <strong>New Topic</strong>. A new window appears to create new topic.</p>
+
+<p><img src="/assets/Fig48.png" alt="Image not Available" /></p>
+
+<p><strong>Step 3:</strong>	Enter topic name and click <strong>Create Topic</strong>.</p>
+
+<p><img src="/assets/Fig52.png" alt="Image not Available" /></p>
+
+<p>The newly created topic is added successfully in the Topic Details page.</p>
+
+<h3 id="edit-topic">Edit Topic</h3>
+
+<p>To edit topic:</p>
+
+<p><strong>Step 1:</strong>	Navigate <strong>Projects</strong> &gt; <strong>My topics</strong> tab.</p>
+
+<p><strong>Step 2:</strong>	Select a topic to edit and the Topic Details page displayed.</p>
+
+<p><strong>Step 3:</strong>	Click <strong>Edit</strong>. A new window appears to edit the details of the topic.</p>
+
+<p><img src="/assets/Fig54.png" alt="Image not Available" /></p>
+
+<p><strong>Step 4:</strong> Click <strong>Update</strong>.</p>
+
+<h3 id="suspend-topic">Suspend Topic</h3>
+
+<p>Suspending the topic allows to disconnect the topic so you will not receive anything from this topic.</p>
+
+<p>When a topic has been suspended, you can still edit and Subscribers can still subscribe to this topic.</p>
+
+<p>To suspend topic:</p>
+
+<p><strong>Step 1:</strong> Navigate to Projects &gt; <strong>My topics</strong> tab.</p>
+
+<p><strong>Step 2:</strong> Select a topic and click Click  and click <img src="/assets/icon9.png" alt="Image not Available" /> icon.</p>
+
+<p><strong>Step 3:</strong> Click <strong>Suspend</strong> and the status becomes Suspended.</p>
+
+<p><strong>Note:</strong> <em>Suspended topic cannot be published</em></p>
+
+<p><img src="/assets/Fig55b.png" alt="Image not Available" /></p>
+
+<p>You can unsuspend the topic by clicking <strong>Unsuspend</strong> and the status becomes Active again.</p>
+
+<p>If there is multiple topics within the topic selected, you can suspend multiple topics.</p>
+
+<p>In the Browse Topic page, you can see the topic has been suspended by the greyed out font and icon.</p>
+
+<h3 id="pending-topic">Pending Topic</h3>
+
+<p>Pending topic is when the Publisher published the topic through MQTT without being first created from the portal.</p>
+
+<p>The Publisher allows to verify if the topic is a valid topic.</p>
+
+<p>To view pending topic:</p>
+
+<p><strong>Step 1:</strong> Navigate to Projects and click <strong>My topics</strong> tab.</p>
+
+<p>A topic with status Pending is displayed.</p>
+
+<p><img src="/assets/Fig56b.png" alt="Image not Available" /></p>
+
+<p>You can edit the details of this topic and update. Also, it allows you to publish the topic and the status changed to Active.</p>
+
+<h2 id="subscribed-topics">Subscribed Topics</h2>
+
+<p>Both publisher and subscriber can subscribe to a topic. Both publisher and subscriber can view the Subscribed topics tab.</p>
+
+<p>To subscribe to a topic:</p>
+
+<p><strong>Step 1:</strong>	Navigate to <strong>Projects</strong> page &gt; <strong>Subscribed topics</strong> tab. Click <strong>Browse Topics</strong>.</p>
+
+<p><img src="/assets/Fig55a.png" alt="Image not Available" /></p>
+
+<p><strong>Step 2:</strong>	Select the topic card that you want to subscribe.</p>
+
+<p><img src="/assets/Fig56.png" alt="Image not Available" /></p>
+
+<p><strong>Step 3:</strong>	Once the topic card is selected, the Topic Details page is displayed. Click <strong>Subscribe</strong>.</p>
+
+<p><img src="/assets/Fig57a.png" alt="Image not Available" /></p>
+
+<p><strong>Step 4:</strong>	Select a project to subscribe to the topic. Click <strong>Subscribe</strong>.</p>
+
+<p><img src="/assets/Fig58.png" alt="Image not Available" /></p>
+
+<p><strong>Step 5:</strong>	Go back to <strong>Projects</strong> and click <strong>Subscribed topics</strong> tab. The new subscription is added to the subscribed topics.</p>
+
+<p><img src="/assets/Fig59.png" alt="Image not Available" /></p>
+
+
+    </div>
+  </body>
+
+</html>
